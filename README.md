@@ -21,19 +21,33 @@ pip3 install pytube
   ffmpeg -version
   ```
  ### Import these modules
-<img width="404" alt="Screenshot 2024-03-23 at 9 01 32 AM" src="https://github.com/NARESHSWAMI199/Download-playlist/assets/51693679/2f5bf2d2-b495-4db7-9683-3d26edbd01a7">
 
-### For download video from youtube without audio
-<img width="724" alt="Screenshot 2024-03-23 at 9 06 09 AM" src="https://github.com/NARESHSWAMI199/Download-playlist/assets/51693679/10898c91-598d-403d-bde4-619bccddbf82">
+ ```python
+import os
+import re
+from pytube import Playlist, YouTube
+```
+
+### For download videos from YouTube without audio
+```python
+video_stream = video_streams.first()
+video_name = video_stream.default_filename
+print(f"Downloading video for {video_name} in {resolution}")
+video_stream.download(filename="video.mp4")
+```
+
 
 ### Download audio only
-<img width="568" alt="Screenshot 2024-03-23 at 9 05 10 AM" src="https://github.com/NARESHSWAMI199/Download-playlist/assets/51693679/426510bf-5a62-435a-b770-ba4cd36faa8e">
-
-### For mix audio and video
 ```python
+audio_stream = video.streams.get_audio_only()
+print(f"Downloading audio for {video_name}")
+audio_stream.download(filename="audio.mp4")
+```
 
-                os.system("ffmpeg -y -i video.mp4 -i audio.mp4 -c:v copy -c:a aac final.mp4 -loglevel quiet -stats")
-                os.rename("final.mp4", video_path)
-                os.remove("video.mp4")
-                os.remove("audio.mp4")
+### For mixing audio and video
+```python
+os.system("ffmpeg -y -i video.mp4 -i audio.mp4 -c:v copy -c:a aac final.mp4 -loglevel quiet -stats")
+os.rename("final.mp4", video_path)
+os.remove("video.mp4")
+os.remove("audio.mp4")
 ```
