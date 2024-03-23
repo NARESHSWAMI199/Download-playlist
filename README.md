@@ -29,4 +29,11 @@ pip3 install pytube
 ### Download audio only
 <img width="568" alt="Screenshot 2024-03-23 at 9 05 10 AM" src="https://github.com/NARESHSWAMI199/Download-playlist/assets/51693679/426510bf-5a62-435a-b770-ba4cd36faa8e">
 
+### For mix audio and video
+```python
 
+                os.system("ffmpeg -y -i video.mp4 -i audio.mp4 -c:v copy -c:a aac final.mp4 -loglevel quiet -stats")
+                os.rename("final.mp4", video_path)
+                os.remove("video.mp4")
+                os.remove("audio.mp4")
+```
