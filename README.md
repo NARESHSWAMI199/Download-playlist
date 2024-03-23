@@ -5,6 +5,11 @@
 ```
 pip install pytube
 ```
+---------- or -----------
+```
+pip3 install pytube
+```
+
 - For video audio mixer 
   - Mac Os.
   ```
